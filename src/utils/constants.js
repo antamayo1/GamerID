@@ -1,0 +1,1 @@
+export const BASE_URL = "https://gamerid-backend-f277a9dacc66.herokuapp.com/";
