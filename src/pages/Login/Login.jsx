@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import PasswordInput from '../../components/Input/PasswordInput'
 import { validateEmail } from '../../utils/helper'
 import axiosInstance from '../../utils/axiosInstance'
+import LoginIntro from '../../components/Info/LoginIntro'
 
 const Login = () => {
 
@@ -49,14 +50,17 @@ const Login = () => {
 
     return (
         <>
-            <Navbar/>
-            <div className="flex items-center justify-center mt-28">
-                <div className="w-96 border rounded bg-white px-7 py-10">
-                    <form onSubmit={handleLogin}>
-                        <h4 className="text-2xl mb-7 drop-shadow">Log In</h4>
+            <Navbar />
+            <div className="flex flex-col md:flex-row md:max-w-2xl bg-background rounded shadow-lg max-w-md mx-auto mt-14 md:mt-28 m-xl">
+                <LoginIntro />
+                <div className="flex items-center justify-center border rounded bg-white px-4 py-10">
+                    <form onSubmit={handleLogin} className="w-56">
+                        <h4 className="text-3xl drop-shadow">Log In</h4>
+                        <p className="text-muted-foreground text-slate-400">Welcome back!</p>
+                        <p className="text-muted-foreground mb-7 text-slate-400">Please log in to your account!</p>
                         <input type="email" placeholder="Email" className="input-box" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
+                        {error && <p className="text-red-500 text-2xs pb-1">{error}</p>}
                         <button type="submit" className="btn-primary">
                             Log in
                         </button>
