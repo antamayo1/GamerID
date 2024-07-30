@@ -5,6 +5,7 @@ import PasswordInput from '../../components/Input/PasswordInput'
 import { validateEmail } from '../../utils/helper'
 import axiosInstance from '../../utils/axiosInstance'
 import LoginIntro from '../../components/Info/LoginIntro'
+import Footer from '../../components/Navbar/Footer'
 
 const Login = () => {
 
@@ -50,8 +51,9 @@ const Login = () => {
 
     return (
         <>
+        <div className='flex justify-between flex-col h-dvh'>
             <Navbar />
-            <div className="flex flex-col md:flex-row md:max-w-2xl bg-background rounded shadow-lg max-w-md mx-auto mt-14 md:mt-28 m-xl">
+            <div className="flex flex-col md:flex-row md:max-w-2xl bg-background rounded shadow-lg max-w-md mx-auto m-xl">
                 <LoginIntro />
                 <div className="flex items-center justify-center border rounded bg-white px-4 py-10">
                     <form onSubmit={handleLogin} className="w-56">
@@ -75,8 +77,10 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+            <Footer />
+            </div>
         </>
     )
 }
 
-export default Login
+export default Login    
