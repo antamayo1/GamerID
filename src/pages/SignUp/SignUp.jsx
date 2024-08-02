@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { validateEmail } from '../../utils/helper';
 import axiosInstance from '../../utils/axiosInstance';
 import Footer from '../../components/Navbar/Footer';
-import LoginIntro from '../../components/Info/loginIntro';
+import LoginIntro from '../../components/Info/LoginIntro';
 
 const SignUp = () => {
 
