@@ -9,6 +9,7 @@ import axiosInstance from '../../utils/axiosInstance';
 import Toast from '../../components/ToastMessage/Toast';
 import EmptyCard from '../../components/Cards/EmptyCard';
 import addGameImage from "../../assets/addGame.svg"
+import Footer from '../../components/Navbar/Footer';
 
 
 const Home = () => {
@@ -102,6 +103,7 @@ const Home = () => {
 
     return (
         <>
+        <div className='flex justify-between flex-col h-dvh'>
             <Navbar userInfo={userInfo}/>
             <div className="container mx-auto w-1/2">
                 {allGames.length > 0 ? <div className='grid grid-cols-1 gap-4 mt-4'>
@@ -152,7 +154,9 @@ const Home = () => {
                 type={showToastMsg.type}
                 onClose={handleCloseToast}
             />
-
+            
+            <Footer />
+        </div>
         </>
     )
 }

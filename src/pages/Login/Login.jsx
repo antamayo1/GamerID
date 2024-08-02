@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom"
 import PasswordInput from '../../components/Input/PasswordInput'
 import { validateEmail } from '../../utils/helper'
 import axiosInstance from '../../utils/axiosInstance'
-import LoginIntro from '../../components/Info/LoginIntro'
 import Footer from '../../components/Navbar/Footer'
+import LoginIntro from '../../components/Info/loginIntro'
 
 const Login = () => {
 
@@ -53,17 +53,17 @@ const Login = () => {
         <>
         <div className='flex justify-between flex-col h-dvh'>
             <Navbar />
-            <div className="flex flex-col md:flex-row md:max-w-2xl bg-background rounded shadow-lg max-w-md mx-auto m-xl">
-                <LoginIntro />
-                <div className="flex items-center justify-center border rounded bg-white px-4 py-10">
+            <div className="flex flex-col md:flex-row md:max-w-2xl bg-background rounded shadow-lg max-w-md md:mx-auto m-xl mx-12">
+                <LoginIntro  header="Create your unique Gamer Card!" message="Showcase achievements and elevate your gaming persona!"/>
+                <div className="flex items-center justify-center border rounded bg-white md:px-4 md:py-10 px-2 py-5">
                     <form onSubmit={handleLogin} className="w-56">
-                        <h4 className="text-3xl drop-shadow">Log In</h4>
+                        <h4 className="drop-shadow md:text-4xl text-3xl">Log In</h4>
                         <p className="text-muted-foreground text-slate-400">Welcome back!</p>
                         <p className="text-muted-foreground mb-7 text-slate-400">Please log in to your account!</p>
                         <input type="email" placeholder="Email" className="input-box" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)}/>
                         {error && <p className="text-red-500 text-2xs pb-1">{error}</p>}
-                        <button type="submit" className="btn-primary">
+                        <button type="submit" className="btn-primary text-lg">
                             Log in
                         </button>
                         <p className="text-sm text-center mt-4">

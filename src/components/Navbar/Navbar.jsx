@@ -14,8 +14,8 @@ const Navbar = ({userInfo}) => {
 
     return (
         <>
-            <nav className="bg-white flex items-center justify-between px-6 py-2 drop-shadow w-screen sticky">
-                <h2 className="md:text-4xl text-2xl text-black py-2 font-bold">Gamer Card</h2>
+            <nav className="bg-white flex items-center justify-between px-6 py-2 drop-shadow w-dvw">
+                <h2 className="md:text-4xl text-xl text-black py-2 font-bold">Gamer Card</h2>
                 <ProfileInfo
                     userInfo={ userInfo } onLogout={ onLogout }
                 />

@@ -4,6 +4,8 @@ import PasswordInput from '../../components/Input/PasswordInput';
 import { Link, useNavigate } from "react-router-dom"
 import { validateEmail } from '../../utils/helper';
 import axiosInstance from '../../utils/axiosInstance';
+import Footer from '../../components/Navbar/Footer';
+import LoginIntro from '../../components/Info/loginIntro';
 
 const SignUp = () => {
 
@@ -58,16 +60,19 @@ const SignUp = () => {
 
     return (
         <>
-            <Navbar/>
-            <div className="flex items-center justify-center mt-28">
-                <div className="w-96 border rounded bg-white px-7 py-10">
+        <div className='flex justify-between flex-col h-dvh'>
+            <Navbar />
+            <div className="flex flex-col md:flex-row md:max-w-2xl bg-background rounded shadow-lg max-w-md md:mx-auto m-xl mx-12">
+                <LoginIntro header="Join us to craft your ultimate gamer card!" message="Start right now!"/>
+                <div className=" border rounded bg-white md:px-7 md:py-10 px-5 py-5">
                     <form onSubmit={handleSignUp}>
-                        <h4 className="text-2xl mb-7 drop-shadow">Sign-up</h4>
-                        <input type="text" placeholder="Name" className="input-box" value={name} onChange={(e) => setName(e.target.value)}></input>
+                        <h4 className="text-3xl drop-shadow">Sign-up</h4>
+                        <p className="text-muted-foreground text-slate-400 mb-6">Welcome new player!</p>
+                        <input type="text" placeholder="In-game Name" className="input-box" value={name} onChange={(e) => setName(e.target.value)}></input>
                         <input type="text" placeholder="Email" className="input-box" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                         <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)}/>
                         {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
-                        <button type="submit" className="btn-primary">
+                        <button type="submit" className="btn-primary text-lg">
                             Create Account
                         </button>
                         <p className="text-sm text-center mt-4">
@@ -81,6 +86,8 @@ const SignUp = () => {
                     </form>
                 </div>
             </div>
+            <Footer />
+        </div>
         </>
     )
 }
