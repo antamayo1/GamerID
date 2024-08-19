@@ -28,7 +28,21 @@
     }
 
     .input-label {
-        @apply text-xs text-slate-400;
+        @apply text-lg text-black;
     }
+
+    .whole-page {
+        @apply flex justify-between flex-col min-h-dvh;
+    }
+
+    .card-size {
+        width: 549px;
+        height: 347px;
+    }
+
+    .card-size-mobile {
+        width: 274px;
+        height: 174px;
+    } 
 }
 

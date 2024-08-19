@@ -93,7 +93,7 @@ const AddEdit = ({ GameData, type, getAllGames, onClose, showToastMessage}) => {
                 />
             </div>
             {error && <p className="text-red-500 text-xs pt-4">{error}</p>}
-            <button className="btn-primary fnot-medium mt-5 p-3" onClick={handleAddGame}>
+            <button className="btn-primary font-medium text-xl mt-5 p-3" onClick={handleAddGame}>
                 {type === "edit"? "Save Changes" : "Add Game"}
             </button>
         </div>

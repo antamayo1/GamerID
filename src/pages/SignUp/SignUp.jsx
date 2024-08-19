@@ -60,7 +60,7 @@ const SignUp = () => {
 
     return (
         <>
-        <div className='flex justify-between flex-col h-dvh'>
+        <div className='whole-page'>
             <Navbar />
             <div className="flex flex-col md:flex-row md:max-w-2xl bg-background rounded shadow-lg max-w-md md:mx-auto m-xl mx-12">
                 <LoginIntro header="Join us to craft your ultimate gamer card!" message="Start right now!"/>

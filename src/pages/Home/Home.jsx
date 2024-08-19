@@ -10,6 +10,7 @@ import Toast from '../../components/ToastMessage/Toast';
 import EmptyCard from '../../components/Cards/EmptyCard';
 import addGameImage from "../../assets/addGame.svg"
 import Footer from '../../components/Navbar/Footer';
+import CardPreview from '../../components/Cards/CardPreview';
 
 
 const Home = () => {
@@ -61,7 +62,8 @@ const Home = () => {
                 setUserInfo(response.data.user);
             }
         } catch (error) {
-            if(error.response.status == 401){
+            console.log(error);
+            if(error.response.status == 403){
                 localStorage.clear();
                 navigate("/login");
             }
@@ -103,30 +105,32 @@ const Home = () => {
 
     return (
         <>
-        <div className='flex justify-between flex-col h-dvh'>
+        <div className='whole-page'>
             <Navbar userInfo={userInfo}/>
-            <div className="container mx-auto w-1/2">
-                {allGames.length > 0 ? <div className='grid grid-cols-1 gap-4 mt-4'>
-                    {allGames.map((item) => (
-                        <GameCard
-                        key={item._id}
-                        GameTitle={item.game_title}
-                        GamerID={item.game_UID}
-                        onEdit={() => handleEdit(item)}
-                        onDelete={() => deleteGame(item)}
-                    />
-                    ))}
-                </div> : <EmptyCard imageSource={addGameImage}  message="Click the Add button below to add a Game and Game ID to your list!"/>}
+            <div className='flex items-center h-fit justify-center gap-7 flex-col md:flex-row'>
+                <div className="flex flex-col md:p-6 p-2">
+                    {allGames.length > 0 ? <div className='grid grid-cols-1 mb-4 gap-4'>
+                        {allGames.map((item) => (
+                            <GameCard
+                            key={item._id}
+                            GameTitle={item.game_title}
+                            GamerID={item.game_UID}
+                            onEdit={() => handleEdit(item)}
+                            onDelete={() => deleteGame(item)}
+                        />
+                        ))}
+                    </div> : <EmptyCard imageSource={addGameImage} />}
+                    <button
+                        className="h-12 flex items-center justify-center rounded bg-primary hover:bg-blue-400 text-xl text-white"
+                        title='Add Game'
+                        onClick={() => {
+                            setOpenAddEditModal({ isShown:true, type:"add", data:null});
+                        }}>
+                        <MdAdd className='size-8'/>
+                    </button>
+                </div>
+                <CardPreview userInfo = {userInfo}/>
             </div>
-
-            <button
-                className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-blue-600 absolute right-10 bottom-10"
-                title='Add Game'
-                onClick={() => {
-                    setOpenAddEditModal({ isShown:true, type:"add", data:null});
-                }}>
-                <MdAdd className="text-[32px] text-white "/>
-            </button>
             <Modal
                 ariaHideApp={false}
                 isOpen={openAddEditModal.isShown}
@@ -139,22 +143,20 @@ const Home = () => {
                 contentLabel = ""
                 className = "w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow -scroll"
             >
-                <AddEdit
-                    type={openAddEditModal.type}
-                    GameData={openAddEditModal.data}
-                    onClose={() => setOpenAddEditModal({ isShown:false, type:"add", date:null})}
-                    getAllGames = { getAllGames }
-                    showToastMessage = { showToastMessage }
-                />
+            <AddEdit
+                type={openAddEditModal.type}
+                GameData={openAddEditModal.data}
+                onClose={() => setOpenAddEditModal({ isShown:false, type:"add", date:null})}
+                getAllGames = { getAllGames }
+                showToastMessage = { showToastMessage }
+            />
             </Modal>
-            
             <Toast
                 isShown={showToastMsg.isShown}
                 message={showToastMsg.message}
                 type={showToastMsg.type}
                 onClose={handleCloseToast}
             />
-            
             <Footer />
         </div>
         </>
